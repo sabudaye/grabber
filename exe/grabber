@@ -2,5 +2,4 @@
 
 require 'grabber'
 
-hello = Grabber::Core
-puts hello.hello
+Grabber::Cli.run(ARGV)

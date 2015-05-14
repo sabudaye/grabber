@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'zerp'
+require 'grabber'
 
 hello = Grabber::Core
 puts hello.hello

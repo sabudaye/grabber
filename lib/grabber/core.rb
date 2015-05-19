@@ -49,9 +49,8 @@ module Grabber
     end
 
     def typhoeus_download(number, path, images)
-      hydra = Typhoeus::Hydra.new
-      number = images.length > number ? number : images.length
-      number.times do
+      hydra = Typhoeus::Hydra.new(max_concurrency: number)
+      images.length.times do
         image = images.pop
         request = Typhoeus::Request.new image
         request.on_complete do |response|

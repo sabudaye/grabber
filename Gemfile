@@ -4,3 +4,7 @@ gemspec
 
 gem 'nokogiri'
 gem 'typhoeus'
+gem 'addressable'
+gem 'colorize'
+
+gem 'pry-byebug'

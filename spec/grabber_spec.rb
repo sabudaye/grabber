@@ -5,7 +5,15 @@ describe Grabber do
     expect(Grabber::VERSION).not_to be nil
   end
 
-  it 'has hello core method' do
-    expect(Grabber::Core.hello).to eq "hello"
+  it 'should return available adapters' do
+    expect(Grabber.adapters).to eq ['threads', 'typhoeus']
+  end
+
+  it 'should raise argument error, missing keyword' do
+    expect { Grabber.grab() }.to raise_error(ArgumentError, 'missing keyword: url')
+  end
+
+  it 'should raise argument error, invalid url' do
+    expect { Grabber.grab(url: 'www.example.com') }.to raise_error(ArgumentError, 'Invalid URL')
   end
 end

@@ -6,5 +6,5 @@ gem 'nokogiri'
 gem 'typhoeus'
 gem 'addressable'
 gem 'colorize'
+gem 'simplecov'
 
-gem 'pry-byebug'

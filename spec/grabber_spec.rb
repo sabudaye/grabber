@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'fileutils'
 
 describe Grabber do
   it 'has a version number' do
@@ -9,11 +10,15 @@ describe Grabber do
     expect(Grabber.adapters).to eq ['threads', 'typhoeus']
   end
 
-  it 'should raise argument error, missing keyword' do
-    expect { Grabber.grab() }.to raise_error(ArgumentError, 'missing keyword: url')
+  it 'should grab images thought threads' do
+    Grabber.grab(url: 'http://www.w3.org')
+    expect(Dir.exist?('./grabber_output/www.w3.org')).to be true
+    FileUtils.rm_rf('./grabber_output')
   end
 
-  it 'should raise argument error, invalid url' do
-    expect { Grabber.grab(url: 'www.example.com') }.to raise_error(ArgumentError, 'Invalid URL')
+  it 'should grab images thought typhoeus' do
+    Grabber.grab(url: 'http://www.w3.org', adapter: 'typhoeus')
+    expect(Dir.exist?('./grabber_output/www.w3.org')).to be true
+    FileUtils.rm_rf('./grabber_output')
   end
 end

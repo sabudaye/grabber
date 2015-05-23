@@ -1,10 +1,10 @@
 require 'spec_helper'
-require 'fileutils'
 
 describe 'Core' do
   before(:each) do
     @core = Grabber::Core.new
-    @url = @core.parse_url('http://www.example.com')
+    @uri = @core.parse_url('http://www.example.com')
+    @image_uri = @core.parse_url('http://www.example.com/path/to/image.png')
   end
 
   it 'should validate url' do
@@ -12,13 +12,18 @@ describe 'Core' do
     expect(@core.valid_url?('http://example.com')).to eq 0
   end
 
-  it 'should make path' do
-    @core.make_path('./tmp', @url.host)
-    expect(Dir.exist?('./tmp/www.example.com')).to be true
-    FileUtils.rm_rf('./tmp')
+  it 'should download html' do
+    expect(@core.get_html(@uri)).not_to be SocketError
+    expect(@core.get_html(@uri)).not_to be nil
   end
 
-  it 'should download html' do
-    expect(@core.get_html('http://www.example.com').status).to eq ["200", "OK"]
+  it 'should make url' do
+    uri = @core.parse_url('http://www.example.com/path/to/image.png')
+    expect(@core.to_url('/path/to/image.png', @uri)).to eq uri
+  end
+
+  it 'should get images list from html' do
+    html = "<html><body><img src='/path/to/image.png'/></body></html>"
+    expect(@core.get_images_url_list(html, @uri)).to eq [@image_uri]
   end
 end

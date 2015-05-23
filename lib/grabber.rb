@@ -1,6 +1,9 @@
 require 'grabber/version'
 require 'grabber/core'
 require 'grabber/cli'
+require 'grabber/utils'
+require 'grabber/adapters/typhoeus_adapter'
+require 'grabber/adapters/threads_adapter'
 
 module Grabber
   extend self
@@ -13,8 +16,13 @@ module Grabber
     core = Core.new
     uri = core.parse_url(url)
     html = core.get_html(uri)
-    path = core.make_path(path, uri.host).first
+    path = Utils.make_path(path, uri.host)
     images = core.get_images_url_list(html, uri)
-    core.typhoeus_download(number, path, images)
+    case adapter
+      when 'threads'
+        ThreadsAdapter.run(number, path, images)
+      when 'typhoeus'
+        TyphoeusAdapter.run(number, path, images)
+    end
   end
 end

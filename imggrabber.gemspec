@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Simple image grabber}
   spec.description   = %q{Gem for grab images from any url}
-  spec.homepage      = 'http://github.com/sabudaye/grabber'
+  spec.homepage      = 'http://github.com/sabudaye/imggrabber'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or

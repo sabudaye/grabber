@@ -1,11 +1,11 @@
-require 'grabber/version'
-require 'grabber/core'
-require 'grabber/cli'
-require 'grabber/utils'
-require 'grabber/adapters/typhoeus_adapter'
-require 'grabber/adapters/threads_adapter'
+require 'imggrabber/version'
+require 'imggrabber/core'
+require 'imggrabber/cli'
+require 'imggrabber/utils'
+require 'imggrabber/adapters/typhoeus_adapter'
+require 'imggrabber/adapters/threads_adapter'
 
-module Grabber
+module Imggrabber
   extend self
 
   def adapters

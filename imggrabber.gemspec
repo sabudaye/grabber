@@ -1,13 +1,13 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'grabber/version'
+require 'imggrabber/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'grabber'
-  spec.version       = Grabber::VERSION
+  spec.name          = 'imggrabber'
+  spec.version       = Imggrabber::VERSION
   spec.authors       = ['Stanislav Budaev']
-  spec.email         = ['s.budaev@simbirsoft.com']
+  spec.email         = ['cafekoma@gmail.com']
 
   spec.summary       = %q{Simple image grabber}
   spec.description   = %q{Gem for grab images from any url}

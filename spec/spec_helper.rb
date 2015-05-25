@@ -2,7 +2,7 @@ require 'simplecov'
 SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'grabber'
+require 'imggrabber'
 require 'fileutils'
 
 require 'vcr'

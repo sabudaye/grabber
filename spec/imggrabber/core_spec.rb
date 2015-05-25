@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Core' do
   before(:each) do
-    @core = Grabber::Core.new
+    @core = Imggrabber::Core.new
     @uri = @core.parse_url('http://www.example.com')
     @image_uri = @core.parse_url('http://www.example.com/path/to/image.png')
   end

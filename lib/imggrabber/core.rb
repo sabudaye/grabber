@@ -2,7 +2,7 @@ require 'addressable/uri'
 require 'nokogiri'
 require 'net/http'
 
-module Grabber
+module Imggrabber
   class Core
     def parse_url(url)
       raise ArgumentError, 'Invalid URL' unless valid_url?(url)

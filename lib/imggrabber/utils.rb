@@ -1,6 +1,6 @@
 require 'fileutils'
 
-module Grabber
+module Imggrabber
   class Utils
     def self.write_file(path, image, body)
       file = File.open("#{path}/#{filename(image)}", "w")

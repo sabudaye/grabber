@@ -1,10 +1,10 @@
 require 'optparse'
 require 'colorize'
 
-module Grabber
+module Imggrabber
   class Cli
     def self.run(args)
-      available_adapters = Grabber.adapters
+      available_adapters = Imggrabber.adapters
       options, output = {}, nil
       no_args = args.empty?
 
@@ -30,7 +30,7 @@ module Grabber
         end
 
         opt.on('-v', '--version', 'Print version') do
-          output ||= 'Grabber version ' << Grabber::VERSION
+          output ||= 'Grabber version ' << Imggrabber::VERSION
         end
       end
       opt_parser.parse!
@@ -41,7 +41,7 @@ module Grabber
       options[:path] = args[1] unless args[1].nil?
 
       begin
-        Grabber.grab(options) if output.nil?
+        Imggrabber.grab(options) if output.nil?
       rescue ArgumentError => e
         puts e.message.red
         puts opt_parser

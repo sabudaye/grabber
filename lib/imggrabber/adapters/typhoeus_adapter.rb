@@ -1,6 +1,6 @@
 require 'typhoeus'
 
-module Grabber
+module Imggrabber
   class TyphoeusAdapter
     def self.run(number, path, images)
       hydra = Typhoeus::Hydra.new(max_concurrency: number)

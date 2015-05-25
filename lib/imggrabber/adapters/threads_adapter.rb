@@ -1,6 +1,6 @@
 require 'thread'
 
-module Grabber
+module Imggrabber
   class ThreadsAdapter
     def self.run(number, path, images)
       queue = Queue.new

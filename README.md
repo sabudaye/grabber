@@ -6,7 +6,7 @@ Simple gem for grab images from any url
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'grabber'
+gem 'imggrabber'
 ```
 
 And then execute:
@@ -15,13 +15,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install grabber
+    $ gem install imggrabber
 
 ## Usage
 To grab images from example.com to ./tmp folder
 
 ```
-grabber www.example.com ./tmp
+bundle exec imggrabber www.example.com ./tmp
 ```
 
 ## Development

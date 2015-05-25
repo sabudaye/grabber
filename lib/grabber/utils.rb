@@ -15,8 +15,8 @@ module Grabber
     end
 
     def self.make_path(path, host)
-      path << "/#{host}"
-      FileUtils.mkpath(path).first
+      full_path = path + "/#{host}"
+      FileUtils.mkpath(full_path).first
     end
   end
 end

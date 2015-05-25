@@ -13,8 +13,10 @@ describe 'Core' do
   end
 
   it 'should download html' do
-    expect(@core.get_html(@uri)).not_to be SocketError
-    expect(@core.get_html(@uri)).not_to be nil
+    VCR.use_cassette("get_html") do
+      expect(@core.get_html(@uri)).not_to be SocketError
+      expect(@core.get_html(@uri)).not_to be nil
+    end
   end
 
   it 'should make url' do

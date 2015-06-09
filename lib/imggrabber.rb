@@ -1,5 +1,5 @@
 require 'imggrabber/version'
-require 'imggrabber/core'
+require 'imggrabber/html_parser'
 require 'imggrabber/cli'
 require 'imggrabber/utils'
 require 'imggrabber/adapters/typhoeus_adapter'
@@ -13,16 +13,19 @@ module Imggrabber
   end
 
   def grab(url:, path: './grabber_output', number: 40, adapter: 'threads')
-    core = Core.new
-    uri = core.parse_url(url)
-    html = core.get_html(uri)
-    path = Utils.make_path(path, uri.host)
-    images = core.get_images_url_list(html, uri)
-    case adapter
+    parser = HtmlParser.new(url)
+    path = Utils.make_path(path, parser.uri.host)
+    adapter_for(adapter).run(number, path, parser.images)
+  end
+
+  private
+  def adapter_for(name)
+    raise ArgumentError, "Unknown adapter #{name}" unless adapters.include?(name)
+    case name
       when 'threads'
-        ThreadsAdapter.run(number, path, images)
+        Adapters::ThreadsAdapter
       when 'typhoeus'
-        TyphoeusAdapter.run(number, path, images)
+        Adapters::TyphoeusAdapter
     end
   end
 end

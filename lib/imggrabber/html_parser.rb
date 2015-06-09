@@ -3,7 +3,21 @@ require 'nokogiri'
 require 'net/http'
 
 module Imggrabber
-  class Core
+  class HtmlParser
+    def initialize(url)
+      @uri = parse_url(url)
+      @html = get_html(@uri)
+    end
+
+    def images
+      @images ||= get_images_url_list(@html, @uri)
+    end
+
+    def uri
+      @uri
+    end
+
+    private
     def parse_url(url)
       raise ArgumentError, 'Invalid URL' unless valid_url?(url)
       Addressable::URI.parse(url)

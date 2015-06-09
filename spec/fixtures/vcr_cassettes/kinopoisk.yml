@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.kinopoisk.ru/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Moved Temporarily
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Tue, 09 Jun 2015 23:23:32 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '160'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=60
+      Location:
+      - http://error.kinopoisk.ru/?ht=403
+      Cookie:
+      - user_country=ru
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>302 Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>302
+        Found</h1></center>\r\n<hr><center>nginx/1.6.2</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Tue, 09 Jun 2015 23:23:32 GMT
+recorded_with: VCR 2.9.3

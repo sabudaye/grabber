@@ -1,13 +1,10 @@
 require 'spec_helper'
 
 describe 'HtmlParser' do
-  before(:each) do
-    @parser = Imggrabber::HtmlParser.new('http://www.w3.org')
-  end
+  let(:url) { 'http://www.w3.org' }
+  let!(:parser) { VCR.use_cassette('w3') { Imggrabber::HtmlParser.new(url) } }
 
   it 'should download images' do
-    VCR.use_cassette("w3") do
-      expect(@parser.images).to be Array
-    end
+    expect(parser.images.sample.class).to eq Addressable::URI
   end
 end

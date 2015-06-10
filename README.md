@@ -21,7 +21,7 @@ Or install it yourself as:
 To grab images from example.com to ./tmp folder
 
 ```
-bundle exec imggrabber www.example.com ./tmp
+bundle exec imggrabber 'www.example.com' './tmp'
 ```
 
 ## Development
